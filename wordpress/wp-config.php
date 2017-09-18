@@ -19,22 +19,20 @@
  */
 
 // ** MySQL settings - You can get this info from your web host ** //
-$url = parse_url(getenv('DATABASE_URL') ? getenv('DATABASE_URL') : getenv('CLEARDB_DATABASE_URL'));
-
 /** The name of the database for WordPress */
-define('DB_NAME', trim($url['path'], '/'));
+define('DB_NAME', 'bd_mova');
 
 /** MySQL database username */
-define('DB_USER', $url['user']);
+define('DB_USER', 'mova_user_db');
 
 /** MySQL database password */
-define('DB_PASSWORD', $url['pass']);
+define('DB_PASSWORD', 'mova_user_db');
 
 /** MySQL hostname */
-define('DB_HOST', $url['host']);
+define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8');
+define('DB_CHARSET', 'utf8mb4');
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
@@ -48,14 +46,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         getenv('AUTH_KEY'));
-define('SECURE_AUTH_KEY',  getenv('SECURE_AUTH_KEY'));
-define('LOGGED_IN_KEY',    getenv('LOGGED_IN_KEY'));
-define('NONCE_KEY',        getenv('NONCE_KEY'));
-define('AUTH_SALT',        getenv('AUTH_SALT'));
-define('SECURE_AUTH_SALT', getenv('SECURE_AUTH_SALT'));
-define('LOGGED_IN_SALT',   getenv('LOGGED_IN_SALT'));
-define('NONCE_SALT',       getenv('NONCE_SALT'));
+define('AUTH_KEY',         'jfhAE8-L1p3GqFd9@GPe{5qyU<xj(tB%@x7r!rmEqz#<5sb6$WrK=(BZe68rr9,T');
+define('SECURE_AUTH_KEY',  'RoP-.=B9U #k<o}C|#uE=S82lzFQqHzPI5[w93UTVt!<.p{}8;|{p[]O,uQSlMI(');
+define('LOGGED_IN_KEY',    '}:u+C0ivC2@kZ@pd9hB.saSI2u-Uu$je_R>[YKV<Zzre>V6(D.Gy_~5,Q%hskAz&');
+define('NONCE_KEY',        'TQBtQ9Co$#@7pCluE1a?+dUI:-X}Xd76FEg`&Dn=9OgRNLFpI=}R3(2cxptcX`&3');
+define('AUTH_SALT',        'uRT]-;QRW[w=_JJN.=Fdnd#41,IkU<9vXSZps%nI?tY!%>M.Zm6JS3eLfpjDG75B');
+define('SECURE_AUTH_SALT', 'Gy|UIl_^YAY^bXH-:(`Ia]@7IA428{@{sd9t|O<Apb?_R ILp9f-03uxD[S]ntG>');
+define('LOGGED_IN_SALT',   '0ZQ>u#(E^4%H7(I9*5;_v@Reag=nCU>IhWmXiRv>2+@SBZ`$tg{qxmZh<EHxH#%P');
+define('NONCE_SALT',       'yW#:j)G[<+;/[bJ*  ![=ArkDsn- QV},=GRwjR,CQ``[ &?_$ji4Dn4RTbUVT:b');
 
 /**#@-*/
 
@@ -65,7 +63,7 @@ define('NONCE_SALT',       getenv('NONCE_SALT'));
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = 'wp_mova';
+$table_prefix  = 'mv_';
 
 /**
  * For developers: WordPress debugging mode.
