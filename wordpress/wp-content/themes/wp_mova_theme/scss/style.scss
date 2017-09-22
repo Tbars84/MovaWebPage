@@ -770,3 +770,53 @@ section#clientes{
 		}	
 	}
 }
+section#formulario{
+	.container-fluid{
+		.row{
+			text-align: center;
+			.wrap-form{
+				display: block;
+				margin: 0 auto; 
+				width: 85%;
+				form{
+					text-align: left;
+				}
+			}
+		}
+	}
+	h2{
+		font-size: 1.5em;
+		margin: 0;
+		padding:0;
+		margin-bottom: 2%;
+		&:before{
+			border:none;
+			content:'';
+		}
+	}
+	.datos-personales-input.marginRight{
+		margin-right: 4%;
+	}
+	.elementos-cotizador{
+		margin: 2% 0%;
+		position: relative;
+		background:$blanco-suave;
+		padding: 3% 2%;
+		p span{
+			display: block;
+			margin-bottom: 1%;
+			font-size: 1.2em;
+			font-weight: 700;
+			cursor: pointer;
+			&:before{
+				content: ' ';
+				position: absolute;
+				left: 0;
+				top: 25px;
+				width: 100px;
+				height: 3px;
+				background: #d11926;
+			}
+		}
+	}
+}

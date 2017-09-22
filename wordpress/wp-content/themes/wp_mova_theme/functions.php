@@ -1,5 +1,5 @@
 <?php
-add_filter('show_admin_bar', '__return_false');
+// add_filter('show_admin_bar', '__return_false');
 
 if ( function_exists( 'add_theme_support' ) )
     add_theme_support( 'post-thumbnails' );

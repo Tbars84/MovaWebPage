@@ -7,3 +7,4 @@
 <script src="<?php bloginfo('template_url'); ?>/js/Gsap/TimelineMax.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/main.js"></script>
 </html>
+<?php wp_footer(); ?>

@@ -8,6 +8,7 @@ $(document).ready(function($) {
     titularesSnnipet();
     listaThumbnail();
     animaRedes();
+    years();
     sliderOwl('slider-comentarios' , 'prev-comentarios' , 'next-comentarios');    
     $('.item-clientes').each(function() {
     	animaClientesItems($(this));
@@ -42,7 +43,7 @@ function iniResponsive(Wh){
 		}
 		// MEDIDAS GLOBALES
 		$('#info-halfScreen , section#titulares, section#break-line-info , section#lista-thumbnail').css({'max-height' : 'initial'});
-		$('section#clientes').css({
+		$('section#clientes , section#formulario').css({
 			'height': 'auto',
 			'max-height' : 'initial'
 		});
@@ -171,3 +172,13 @@ function animaRedes(){
 		});
 	});
 }
+function years(startYear) {
+        var currentYear = new Date().getFullYear(), years = [];
+        startYear = startYear || 1979;
+		
+        while ( startYear <= currentYear ) {
+                years.push(startYear++);
+                $("#yearEvent").append('<option value=1>'+startYear+'</option>');
+        }
+        return years;
+}    
