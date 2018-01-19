@@ -5,23 +5,42 @@
  * 19.09.2017
 */
 get_header();
+$tituloIntro = rwmb_meta('titulo-introduccion');
+$textoIntro = rwmb_meta( 'texto-introduccion');
+
 ?>
-	    <section id="slider-full">
+		<div class="padd-movile"></div>	
+	    <section id="slider-full" style="max-height: 520px; overflow: hidden;">
 		    <div class="separador-vibracion"></div>
 	    	<div class="container-fluid">
 				<div class="row">
+						<div class="titulo-cotizacion-inicio">
+							<p>
+								<?php the_title(); ?>
+							</p>
+							<a href="http://camilo-tabares.com/MovaWebPage/wordpress/cotizador/">Solicitar Cotización</a>
+						</div>
 						<div class="owl-carousel owl-theme slider-inicio">
+							<?php
+							$args = array(
+								'post_type' => 'slider',
+								'order'  => 'ASC'
+							);
+							 $query = new WP_Query( $args );		
+							if ( $query->have_posts() ) : 
+								while ( $query->have_posts() ) : $query->the_post(); 	
+									$imagenesSlider = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
+							?>
 							<div class="item">
-								<img class="img-responsive " src="<?php bloginfo('template_url'); ?>/img/slider-1.jpg" alt="Titulo de la Imagen">
+								<img class="img-responsive " src="<?php echo $imagenesSlider; ?>" />
 							</div>
-							<div class="item">
-								<img class="img-responsive " src="<?php bloginfo('template_url'); ?>/img/slider-2.jpg" alt="Titulo de la Imagen">
-							</div>
-							<div class="item">
-								<img class="img-responsive " src="<?php bloginfo('template_url'); ?>/img/slider-3.jpg" alt="Titulo de la Imagen">
-							</div>
-							
-
+							<?php  
+								endwhile;
+								wp_reset_postdata();
+							else :
+								esc_html_e( 'Debes ingresar imagenes dentro del pod de slider' );
+							endif;
+							?>
 						</div>
 					</div>
 					<div class="textutra-bottom"></div>
@@ -33,75 +52,75 @@ get_header();
 	    		<div class="info-wrap">
 	    			<div class="info-text">
 	    				<div class="wrap-info">
-		    				<h1>OVERVIEW</h1>
+		    				<h1><?php echo $tituloIntro; ?></h1>
 		    				<p>
-		    				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut voluptas similique in porro sint saepe alias, iusto quas ab voluptatem fugiat culpa aperiam? Nulla rerum quidem accusamus voluptatum eveniet accusantium.
-		    				<br>
-		    				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit autem optio, expedita est quasi. Esse nesciunt animi, veniam eum iure totam veritatis numquam! Fuga officiis ad animi molestias, ex, odio.
+								<?php echo $textoIntro; ?>
 		    				</p>	    					
 	    				</div>
 	    			</div>
 	    			<div class="info-img">
-	    				<img src="<?php bloginfo('template_url'); ?>/img/photo-sample-info.jpg" alt="Foto de titulares">
-	    			</div>
+	    			<?php  
+	    			if ( have_posts() ) : while ( have_posts() ) : the_post();
+	    				$urlSingle = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
+	    			?>	
+	    				<img src="<?php echo $urlSingle; ?>" alt="Foto de titulares">
+					<?php  
+						endwhile; 
+						wp_reset_postdata();
+					else :
+						esc_html_e( 'Sorry, no posts matched your criteria.' );
+					endif;
+					?>	 	    				
+					</div>
 	    		</div>
 	    	</div>
 	    </section>
 		<section id="clientes">
 	    	<div class="container-fluid">
-	    		<h2>Clientes</h2>
+	    		<h2>Nuestros Clientes</h2>
 				<div class="row">
 					<div class="spacer"></div>
 				</div>	    		
 	    		<div class="row">
+					<?php
+					$args = array(
+						'post_type' => 'clientes-thumbslider',
+						'order'  => 'ASC'
+					);
+					 $query = new WP_Query( $args );
+					if ( $query->have_posts() ) : 
+						while ( $query->have_posts() ) : $query->the_post(); 	
+							$clientesBg = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
+					        $imagenesClientes = rwmb_meta('blog-bg');
+					        $imagenLogoCliente = array_shift($imagenesClientes);
+					?>
 	    			<div class="col-xs-5 item-clientes">
 	    				<div class="item-logo-clientes-cont">
-	    					<img class="item-clientes-logo" src="<?php bloginfo('template_url'); ?>/img/logo-budweizer.png" alt="">
+	    					<img class="item-clientes-logo" src="<?php echo $imagenLogoCliente['full_url']; ?>" alt="">
 	    				</div>
-	    				<h5>Budweiser</h5>
-	    				<img class="item-clientes-bg" src="<?php bloginfo('template_url'); ?>/img/fondo-budweizer.jpg" alt="">
+	    				<h5><?php the_title();?></h5>
+	    				<img class="item-clientes-bg" src="<?php echo $clientesBg; ?>" alt="">
 	    			</div>
-	    			<div class="col-xs-2"></div>
-	    			<div class="col-xs-5 item-clientes">
-	    				<div class="item-logo-clientes-cont">
-	    					<img class="item-clientes-logo" src="<?php bloginfo('template_url'); ?>/img/logo-budweizer.png" alt="">
-	    				</div>
-	    				<h5>Budweiser</h5>
-	    				<img class="item-clientes-bg" src="<?php bloginfo('template_url'); ?>/img/fondo-budweizer.jpg" alt="">
-	    			</div>
+					<?php  
+						endwhile;
+						wp_reset_postdata();
+					else :
+						esc_html_e( 'No hay LOGOS de clientes' );
+					endif;
+					?>
 	    		</div>
-				<div class="row">
-					<div class="spacer"></div>
-				</div>
-	    		<div class="row">
-	    			<div class="col-xs-5 item-clientes">
-	    				<div class="item-logo-clientes-cont">
-	    					<img class="item-clientes-logo" src="<?php bloginfo('template_url'); ?>/img/logo-budweizer.png" alt="">
-	    				</div>
-	    				<h5>Budweiser</h5>
-	    				<img class="item-clientes-bg" src="<?php bloginfo('template_url'); ?>/img/fondo-budweizer.jpg" alt="">
-	    			</div>
-	    			<div class="col-xs-2"></div>
-	    			<div class="col-xs-5 item-clientes">
-	    				<div class="item-logo-clientes-cont">
-	    					<img class="item-clientes-logo" src="<?php bloginfo('template_url'); ?>/img/logo-budweizer.png" alt="">
-	    				</div>
-	    				<h5>Budweiser</h5>
-	    				<img class="item-clientes-bg" src="<?php bloginfo('template_url'); ?>/img/fondo-budweizer.jpg" alt="">
-	    			</div>
-	    		</div>
-				<div class="row">
-					<div class="spacer"></div>
-				</div>				
 			</div>			
 		</section>
 		<section id="break-line-info"  class="cotizador">
 			<div class="container-fluid">
-				<h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+				<h4>Cotizador en Línea</h4>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa harum maxime sequi blanditiis provident voluptatem quod fugit ad libero doloribus facere reiciendis adipisci molestias, assumenda dolorum beatae dolor amet cumque!</p>
-				<a href="#">Solicitar Cotización</a>				
+				<a href="http://camilo-tabares.com/MovaWebPage/wordpress/cotizador/">Solicitar Cotización</a>				
 			</div>
-		</section>		
+		</section>	
+		<section id="footer">
+			<div class="inicio"></div>
+		</section>
 	</main>	    
 </body>
 <?php  
